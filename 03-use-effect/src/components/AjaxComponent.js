@@ -4,6 +4,7 @@ export const AjaxComponent = () => {
     //Promesa
     const [usuarios, setUsuarios] = useState([]);
     const [cargando, setCargando] = useState(true);
+    const [errores, setErrores] = useState("");
 
     //Generico o Basico
     const getUsuariosEstaticos = () => {
@@ -48,13 +49,21 @@ export const AjaxComponent = () => {
 
     //definicon como la funcion async para poder usar await
     const getUsuariosAjaxAW = () => {
-        setTimeout(async() => {
-            //aca se esperara al resultado que devuelva fetch()
-            const peticion = await fetch("https://reqres.in/api/users?page=1");
-            const { data } = await peticion.json();
-            console.log(data);
-            setUsuarios(data);
-            setCargando(false);
+
+        setTimeout(async () => {
+            try {
+                //aca se esperara al resultado que devuelva fetch()
+                const peticion = await fetch("https://reqres.in/api/users?page=1");
+                const { data } = await peticion.json();
+                console.log(data);
+                setUsuarios(data);
+                setCargando(false);
+                
+            }catch(error){
+                console.log("Hola->",error.message);
+                setErrores(error.message);
+            }
+            
         }, 2000);
 
     }
@@ -65,8 +74,15 @@ export const AjaxComponent = () => {
         getUsuariosAjaxAW();
     }, []);
 
-    //condicion
-    if (cargando == true) {
+    if(errores !== ""){
+        //cunado pasa algu error
+        return (
+            <div className='errores'>
+                {errores}                
+            </div>
+        );
+    } //condicion
+     else if (cargando == true) {
         //Cuando todo esta cargando
         return (
             <div className='cargando'>
@@ -74,7 +90,7 @@ export const AjaxComponent = () => {
 
             </div>
         );
-    } else {
+    } else if (cargando==false && errores === "") {
         //Cuando todo ha ido bien
         return (
             <div>
@@ -84,10 +100,10 @@ export const AjaxComponent = () => {
                         usuarios.map(usuario => {
                             console.log(usuario);
                             return <li key={usuario.id}>
-                                <img src={usuario.avatar} width="50"/>
+                                <img src={usuario.avatar} width="50" />
                                 &nbsp;
                                 {usuario.first_name} {usuario.last_name}
-                                </li>
+                            </li>
                         })
                     }
                 </ol>
