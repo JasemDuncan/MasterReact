@@ -1,7 +1,6 @@
 export const GuardarEnStorage = (clave, elemento) => {
     //Conseguir elementos que se tienen en el localStorage
     let elementos = JSON.parse(localStorage.getItem(clave));
-    console.log(elementos);
     
     //Comprobar si es una array
     if(Array.isArray(elementos)){
