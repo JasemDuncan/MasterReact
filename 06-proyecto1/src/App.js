@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Buscador } from "./components/Buscador";
 import { Crear } from "./components/Crear";
 import { Listado } from "./components/Listado";
 
 
 function App() {
+
+    const [listadoState, setListadoState] = useState([]);
+
   return (
     <div className="layout">  
         {/*Cabecera*/}
@@ -26,13 +30,13 @@ function App() {
         {/*Contenido principal*/}
         <section id="content" className="content">
             {/*Aqui van el listado de peliculas*/}
-            <Listado/>
+            <Listado listadoState={listadoState} setListadoState={setListadoState}/>
         </section>
 
         {/*Barra laterla*/}
         <aside className="lateral">
             <Buscador/>
-            <Crear />
+            <Crear setListadoState={setListadoState}/>
         </aside>
 
 

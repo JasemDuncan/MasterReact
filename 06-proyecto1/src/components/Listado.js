@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-export const Listado = () => {
+export const Listado = ({listadoState, setListadoState}) => {
 
-    const [listadoState, setListadoState] = useState([]);
+    // const [listadoState, setListadoState] = useState([]);
 
     useEffect(() => {
         console.log("Componente del listado de peliculas cargado!!");
@@ -27,7 +27,7 @@ export const Listado = () => {
                     </article>
                 );
             })
-            :<strong>NO hay peliculas para mostrar</strong>
+            :<h2>NO hay peliculas para mostrar</h2>
             }
         </>
     )
