@@ -3,7 +3,7 @@ import { GuardarEnStorage } from '../helpers/GuardarEnStorage';
 
 export const Crear = ({setListadoState}) => {
     
-    const tituloComponente ="Anadir pelicula2";
+    const tituloComponente ="Anadir pelicula";
     const [peliState, setPeliState]=useState({
         titulo: '',
         descripcion: ''
