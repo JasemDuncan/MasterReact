@@ -222,6 +222,6 @@ input[type="button"]{
 }
 
 /*Edit form*/
-.edit_form {
-
+.no-encontrado {
+  color: red;
 }
