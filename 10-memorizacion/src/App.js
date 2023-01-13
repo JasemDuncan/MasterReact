@@ -1,22 +1,17 @@
 
 import './App.css';
+import { Gestion } from './components/Gestion';
+import { Tareas } from './components/Tareas';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-      
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* Ejercicio con metodo MEMO */}
+        {/* <Gestion/> */}
+
+        {/* Ejercicio con el hook useMemo */}
+        <Tareas />
       </header>
     </div>
   );
