@@ -8,10 +8,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* Ejercicio con metodo MEMO */}
-        {/* <Gestion/> */}
+        <Gestion/>
 
         {/* Ejercicio con el hook useMemo */}
-        <Tareas />
+        {/* <Tareas /> */}
       </header>
     </div>
   );
